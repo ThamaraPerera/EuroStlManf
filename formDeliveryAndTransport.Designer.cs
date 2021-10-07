@@ -199,7 +199,6 @@ namespace EuroStlManf
             this.Text = "formDeliveryAndTransport";
             this.Load += new System.EventHandler(this.formDeliveryAndTransport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);

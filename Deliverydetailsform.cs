@@ -43,13 +43,20 @@ namespace EuroStlManf
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand command = new SqlCommand("update Delivery_data set empID = '"+ textBox1.Text + "',orderID = '" + textBox2.Text + "',VID = '" + textBox3.Text + "',deliveryDate = '" + dateTimePicker1.Text + "',destination = '" + textBox5.Text + "',mileage = '" + textBox6.Text + "' where DID = '"+ textBox7.Text + "'", con);
-            command.ExecuteNonQuery();
-            MessageBox.Show("Successfully updated");
-            con.Close();
-            var principalForm = Application.OpenForms.OfType<formDeliveryAndTransport>().FirstOrDefault();
-            principalForm.BindDataD();
+            if (textBox7.Text != "")
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand("update Delivery_data set empID = '" + textBox1.Text + "',orderID = '" + textBox2.Text + "',VID = '" + textBox3.Text + "',deliveryDate = '" + dateTimePicker1.Text + "',destination = '" + textBox5.Text + "',mileage = '" + textBox6.Text + "' where DID = '" + textBox7.Text + "'", con);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Successfully updated");
+                con.Close();
+                var principalForm = Application.OpenForms.OfType<formDeliveryAndTransport>().FirstOrDefault();
+                principalForm.BindDataD();
+            }
+            else
+            {
+                MessageBox.Show("Please enter Delivery ID");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -120,6 +120,7 @@ namespace EuroStlManf
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(357, 20);
             this.textBox2.TabIndex = 27;
+
             // 
             // textBox1
             // 
@@ -127,6 +128,7 @@ namespace EuroStlManf
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(357, 20);
             this.textBox1.TabIndex = 28;
+
             // 
             // label6
             // 
