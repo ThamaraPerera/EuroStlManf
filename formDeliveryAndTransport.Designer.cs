@@ -151,9 +151,9 @@ namespace EuroStlManf
             this.label2.BackColor = System.Drawing.Color.Coral;
             this.label2.Location = new System.Drawing.Point(425, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Vehicle Details";
+            this.label2.Text = "Available Vehicles";
             // 
             // label3
             // 

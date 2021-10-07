@@ -76,7 +76,7 @@ namespace EuroStlManf
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Regex vid = new Regex(@"\b[V]\d+");
+            Regex vid = new Regex(@"\b[V]\d+$");
             Regex lp = new Regex(@"\b[A-Z]{2,3}-[0-9]{4}$");
 
             if (string.IsNullOrWhiteSpace(textBox1.Text))
@@ -169,49 +169,5 @@ namespace EuroStlManf
                 MessageBox.Show("Please enter Vehicle ID");
             }
         }
-        //Regex email = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
-        /*private void textBoxVID_validate(object sender, CancelEventArgs e)
-        {
-            Regex vid = new Regex(@"\b[V]\d+");
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                e.Cancel = true;
-                textBox1.Focus();
-                errorProviderApp.SetError(textBox1, "Vehicle ID should not be left blank!");
-            }
-            else if (!vid.IsMatch(textBox1.Text))
-                {
-                    e.Cancel = true;
-                    textBox1.Focus();
-                    errorProviderApp.SetError(textBox1, "Please enter a valid vehicle ID!");
-                }
-                    else
-                    {
-                        e.Cancel = false;
-                        errorProviderApp.SetError(textBox1, "");
-                    }
-        }
-
-        private void textBoxLicense_validate(object sender, CancelEventArgs e)
-        {
-            Regex lp = new Regex(@"\b[A-Z]{2,3}-[0-9]{4}$");
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                e.Cancel = true;
-                textBox1.Focus();
-                errorProviderApp.SetError(textBox1, "License plate should not be left blank!");
-            }
-            else if (!lp.IsMatch(textBox1.Text))
-            {
-                e.Cancel = true;
-                textBox1.Focus();
-                errorProviderApp.SetError(textBox1, "Please enter a valid License Plate number!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProviderApp.SetError(textBox1, "");
-            }
-        }*/
     }
 }

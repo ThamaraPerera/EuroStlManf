@@ -50,7 +50,7 @@ namespace EuroStlManf
 
         public void BindDataV()
         {
-            SqlCommand command = new SqlCommand("select * from vehicle_data ", con);
+            SqlCommand command = new SqlCommand("select VID,licensePlate,type,status from vehicle_data where status='In' ", con);
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
