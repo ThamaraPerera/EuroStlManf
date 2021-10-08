@@ -15,6 +15,7 @@ namespace EuroStlManf
     public partial class Breakdowndetailsform : Form
     {
         SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=delivery_management;Integrated Security=True");
+        bool txt;
         public Breakdowndetailsform()
         {
             InitializeComponent();
@@ -25,10 +26,7 @@ namespace EuroStlManf
 
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -135,22 +133,22 @@ namespace EuroStlManf
             else if (string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 textBox2.Focus();
-                MessageBox.Show("Please enter Vehicle ID");
+                MessageBox.Show("Please enter Order ID");
             }
-            else if (!vid.IsMatch(textBox2.Text))
+            else if (!oid.IsMatch(textBox2.Text))
             {
                 textBox2.Focus();
-                MessageBox.Show("Please enter a Valid Vehicle ID");
+                MessageBox.Show("Please enter a Valid Order ID");
             }
             else if (string.IsNullOrWhiteSpace(textBox3.Text))
             {
                 textBox3.Focus();
-                MessageBox.Show("Please enter Order ID");
+                MessageBox.Show("Please enter Vehicle ID");
             }
-            else if (!oid.IsMatch(textBox3.Text))
+            else if (!vid.IsMatch(textBox3.Text))
             {
                 textBox3.Focus();
-                MessageBox.Show("Please enter a Valid Order ID");
+                MessageBox.Show("Please enter a Valid Vehicle ID");
             }
             else if (string.IsNullOrWhiteSpace(dateTimePicker1.Text))
             {
@@ -168,10 +166,17 @@ namespace EuroStlManf
                 con.Open();
                 SqlCommand command = new SqlCommand("update Breakdown_data set empID = '" + textBox1.Text + "',VID = '" + textBox3.Text + "',orderID = '" + textBox2.Text + "',date = '" + dateTimePicker1.Text + "',location = '" + textBox5.Text + "' where BID = '" + textBox6.Text + "'", con);
                 command.ExecuteNonQuery();
+                if (txt == true)
+                {
+                    SqlCommand command1 = new SqlCommand(" update Vehicle_data set status = 'Out' where VID = '" + textBox3.Text + "'", con);
+                    command1.ExecuteNonQuery();
+                    txt = false;
+                }
                 MessageBox.Show("Successfully updated");
                 con.Close();
                 var principalForm = Application.OpenForms.OfType<formDeliveryAndTransport>().FirstOrDefault();
                 principalForm.BindDataB();
+                principalForm.BindDataV();
             }
         }
 
@@ -212,11 +217,17 @@ namespace EuroStlManf
                     textBox5.Text = srd.GetValue(4).ToString();
                 }
                 con.Close();
+                txt = false;
             }
             else
             {
                 MessageBox.Show("Please enter Breakdown ID");
             }
+        }
+
+        private void vid_change(object sender, EventArgs e)
+        {
+            txt = true;
         }
     }
 }
